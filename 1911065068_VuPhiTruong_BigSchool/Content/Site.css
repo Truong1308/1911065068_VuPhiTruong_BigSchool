@@ -1,12 +1,36 @@
 ﻿body {
 }
 .navbar-inverse {
-    background-color: #3e0f0f;
+    background-color: #d41d50;
     border-color: #fbf6f6;
 }
+
 .navbar-inverse .navbar-nav > li > a {
-        color: white;
-    }
+    color: #fbf6f6;
+}
+
 .navbar-inverse .navbar-brand {
-        color: white;
-    }
+    color: #fbf6f6;
+}
+
+.course{
+    list-style: none;
+}
+.course > li {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.course > li .date
+{
+    text-align: center;
+    background-color: #d41d50;
+    color: #fbf6f6;
+    width: 60px;
+    border-radius: 8px;
+}
+.course > li .details {
+    position: absolute;
+    top: 0;
+    left: 70px;
+}
