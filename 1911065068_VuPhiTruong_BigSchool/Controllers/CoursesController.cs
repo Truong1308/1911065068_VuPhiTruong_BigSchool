@@ -17,12 +17,22 @@ namespace _1911065068_VuPhiTruong_BigSchool.Controllers
         public CoursesController()
         {
             _dbContext = new ApplicationDbContext();
-        } 
+        }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
 
+        [Authorize]
+        public ActionResult Create()
+        {
+            var viewModel = new CourseViewModels
+            {
+                Categories = _dbContext.Categories.ToList()
+            };
+            return View(viewModel);
+        }
+       
         public ActionResult Create(CourseViewModels viewModel)
         {
             if (!ModelState.IsValid)
