@@ -19,9 +19,9 @@ namespace _1911065068_VuPhiTruong_BigSchool.Controllers
             _dbContext = new ApplicationDbContext();
         } 
 
-        //[Authorize]
-        //[HttpPost]
-       // [ValidateAntiForgeryToken]
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult Create(CourseViewModels viewModel)
         {
