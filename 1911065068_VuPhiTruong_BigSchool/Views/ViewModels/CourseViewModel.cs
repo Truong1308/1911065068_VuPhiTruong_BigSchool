@@ -10,6 +10,8 @@ namespace _1911065068_VuPhiTruong_BigSchool.ViewModels
 {
     public class CourseViewModels
     {
+        internal string Heading;
+
         [Required]
         public string Place { get; set; }
         [Required]
@@ -24,7 +26,6 @@ namespace _1911065068_VuPhiTruong_BigSchool.ViewModels
         public DateTime GetDateTime()
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
-
         }
     }
 }
