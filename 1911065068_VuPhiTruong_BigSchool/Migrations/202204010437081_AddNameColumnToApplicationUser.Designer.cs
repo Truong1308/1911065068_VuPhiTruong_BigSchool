@@ -7,13 +7,13 @@ namespace _1911065068_VuPhiTruong_BigSchool.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PopulateCategoryTable : IMigrationMetadata
+    public sealed partial class AddNameColumnToApplicationUser : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateCategoryTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNameColumnToApplicationUser));
         
         string IMigrationMetadata.Id
         {
-            get { return "202203140735513_PopulateCategoryTable"; }
+            get { return "202204010437081_AddNameColumnToApplicationUser"; }
         }
         
         string IMigrationMetadata.Source

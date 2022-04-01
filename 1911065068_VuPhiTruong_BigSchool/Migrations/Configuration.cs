@@ -10,7 +10,6 @@ namespace _1911065068_VuPhiTruong_BigSchool.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "_1911065068_VuPhiTruong_BigSchool.Models.ApplicationDbContext";
         }
 
         protected override void Seed(_1911065068_VuPhiTruong_BigSchool.Models.ApplicationDbContext context)
