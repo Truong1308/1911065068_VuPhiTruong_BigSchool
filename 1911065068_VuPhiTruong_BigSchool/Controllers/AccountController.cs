@@ -151,7 +151,7 @@ namespace _1911065068_VuPhiTruong_BigSchool.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
