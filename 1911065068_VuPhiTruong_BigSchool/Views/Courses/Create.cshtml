@@ -9,6 +9,7 @@
 {
 <form>
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
     <div class="form-groub">
         @Html.LabelFor(m => m.Place)
         @Html.TextBoxFor(m => m.Place, new { @class = "form-control" })

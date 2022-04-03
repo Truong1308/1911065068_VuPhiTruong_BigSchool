@@ -9,6 +9,8 @@ namespace _1911065068_VuPhiTruong_BigSchool.ViewModels
 {
     public class CourseViewModel
     {
+        
+
         public int Id { get; set; }
         [Required(ErrorMessage = "Tiêu đề không được trống")]
         public string Place { get; set; }
@@ -26,6 +28,7 @@ namespace _1911065068_VuPhiTruong_BigSchool.ViewModels
 
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<Course> UpcomingCourse { get; set; }
+        public string Heading { get; set; }
         public bool ShowAction { get; set; }
         public string Action
         {

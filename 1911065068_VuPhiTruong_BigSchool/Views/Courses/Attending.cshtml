@@ -1,64 +1,47 @@
 ﻿@model _1911065068_VuPhiTruong_BigSchool.ViewModels.CourseViewModel
-@using _1911065068_VuPhiTruong_BigSchool.Models;
 @using Microsoft.AspNet.Identity;
-@{ ViewBag.Title = "Home Page"; }
-
-
+@using _1911065068_VuPhiTruong_BigSchool.Models;
+@{ ViewBag.Title = "Attending";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<h2>Attending</h2>
 <ul class="course">
     @foreach (var course in Model.UpcomingCourse)
-        {
-    <li>
-        <div class="date">
-            <div class="month">
-                @course.DateTime.ToString("MM")
-            </div>
-            <div class="day">
-                @course.DateTime.ToString("dd")
-            </div>
+    {
+<li>
+    <div class="date">
+        <div class="month">
+            @course.DateTime.ToString("MM")
         </div>
-        <div class="details">
-            <span class="lecturer">
-                Giảng viên: @course.Lecturer.Name
-                @if (Model.ShowAction)
-                {
-                    var User_ID = User.Identity.GetUserId();
-                    ApplicationDbContext _dbContext = new ApplicationDbContext();
-                    bool isFollowing = _dbContext.Followings.Any(f => f.FolloweeId == course.LecturerId && f.FollowerId == User_ID);
-                    if (isFollowing)
-                    {
-                        <button class=" btn-info btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
-                            Following
-                        </button> }
-                    else
-                    {
-                    <button class=" btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">
-                        Follow
-                    </button>}
-                    }
-            </span>
-            <span class="category">
-                <br />
-
-                Môn: @course.Category.Name
-            </span>
+        <div class="day">
+            @course.DateTime.ToString("dd")
+        </div>
+    </div>
+    <div class="details">
+        <span class="lecturer">
+            Tên : @course.Lecturer.Name
+        </span>
+        <br />
+        <span class="category">
+            <br />
+            Môn: @course.Category.Name
             @if (Model.ShowAction)
             {
                 var User_ID = User.Identity.GetUserId();
                 ApplicationDbContext _dbContext = new ApplicationDbContext();
                 bool isGoing = _dbContext.Attendances.Any(a => a.CourseId == course.Id && a.AttendeeId == User_ID);
-
                 if (isGoing)
                 {
-                    <button data-course-id="@course.Id" class="btn-info btn-sm js-toggle-attendance">Going</button> }
+                <button data-course-id="@course.Id" class="btn btn-info btn-sm js-toggle-attendance">Going</button> }
                 else
                 {
-                    <button data-course-id="@course.Id" class="btn-default btn-sm js-toggle-attendance">Going?</button>}
+                <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>}
                 }
-            </div>
-        </li>
-     }
+        </span>
+    </div>
+</li>}
 </ul>
-@section scripts{
+@section scripts
+{
     <script>
         $(document).ready(function () {
             $(".js-toggle-attendance").click(function (e) {
@@ -99,7 +82,6 @@
                         .done(function () {
                             button
                                 .removeClass("btn-default")
-                                .addClass("btn-info")
                                 .text("Following");
                         })
                         .fail(function () {
@@ -113,16 +95,15 @@
                     })
                         .done(function () {
                             button
-                                .removeClass("btn-info")
                                 .addClass("btn-default")
                                 .text("Follow");
                         })
                         .fail(function () {
-                            alert("Something failed!");
+                            alert("Something failed! (2)");
                         });
                 }
             });
         });
-
     </script>
 }
+
