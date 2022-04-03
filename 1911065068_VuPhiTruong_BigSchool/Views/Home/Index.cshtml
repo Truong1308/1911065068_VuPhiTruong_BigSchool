@@ -1,9 +1,9 @@
-﻿@model IEnumerable<_1911065068_VuPhiTruong_BigSchool.Models.Course>
+﻿@model _1911065068_VuPhiTruong_BigSchool.ViewModels.CourseViewModel
 @{ ViewBag.Title = "Home Page"; }
 
 
 <ul class="course">
-    @foreach (var course in Model)
+    @foreach (var course in Model.UpcomingCourse)
     {
 <li>
     <div class="date">
@@ -17,12 +17,19 @@
     <div class="details">
         <span class="lecturer">
             @course.Lecturer.Name
+            @if (Model.ShowAction)
+            {
+                <button class=" btn-info btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Following</button>
+            }
         </span>
+        <br />
         <span class="category">
             @course.Category.Name
+            @if (Model.ShowAction)
+            {
+            <button data-course-id%="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+            }
         </span>
-        <button data-course-id%="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
-
     </div>
 </li>}
 </ul>
@@ -43,6 +50,20 @@
                         alert("Something failed!");
                     });
             });
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                if (button.hasClass("btn-default")) {
+                    $.post("/api/followings", { followeeId: button.attr("data-user-id") })
+                        .done(function () {
+                            button
+                                .removeClass("btn-default")
+                                .addClass("btn-info")
+                                .text("Following");
+                        })
+                        .fail(function () {
+                            alert("Something failed!");
+                        });
+                }
         });
     </script>
 }
