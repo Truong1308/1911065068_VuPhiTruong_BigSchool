@@ -11,6 +11,7 @@ namespace _1911065068_VuPhiTruong_BigSchool.Models
     {
         public DbSet<Course> Course { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
 
 
 
@@ -23,6 +24,13 @@ namespace _1911065068_VuPhiTruong_BigSchool.Models
         {
             return new ApplicationDbContext();
         }
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Attendance>()
+                .HasRequired(a => a.Course)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
