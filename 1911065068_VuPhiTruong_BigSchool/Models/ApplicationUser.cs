@@ -1,4 +1,4 @@
-﻿    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,6 +13,7 @@ namespace _1911065068_VuPhiTruong_BigSchool.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -21,12 +22,9 @@ namespace _1911065068_VuPhiTruong_BigSchool.Models
             return userIdentity;
         }
     }
-
+    /*
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Category> Categories { get; set; }
-
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -37,4 +35,5 @@ namespace _1911065068_VuPhiTruong_BigSchool.Models
             return new ApplicationDbContext();
         }
     }
+    */
 }

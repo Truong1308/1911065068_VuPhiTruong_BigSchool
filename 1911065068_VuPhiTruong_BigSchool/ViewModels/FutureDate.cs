@@ -5,19 +5,19 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 
-namespace _1911065068_VuPhiTruong_BigSchool.Views.ViewModels
+namespace _1911065068_VuPhiTruong_BigSchool.ViewModels
 {
-    public class ValidTime : ValidationAttribute
+    public class FutureDate : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
             DateTime dateTime;
             var isValid = DateTime.TryParseExact(Convert.ToString(value),
-                "HH:mm",
+                "dd/MM/yyyy",
                 CultureInfo.CurrentCulture,
                 DateTimeStyles.None,
                 out dateTime);
-            return isValid;
+            return (isValid && dateTime > DateTime.Now);
         }
     }
 }

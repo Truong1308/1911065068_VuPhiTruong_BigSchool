@@ -1,21 +1,6 @@
 ﻿@model IEnumerable<_1911065068_VuPhiTruong_BigSchool.Models.Course>
-@{
-    ViewBag.Title = "Home Page";
-}
-<br />
-<br />
-<br />
+@{ ViewBag.Title = "Home Page"; }
 
-<div class="row">
-    <ul>
-        @foreach (var course in Model)
-        {
-            <li>
-                @course.DateTime - @course.Lecturer.Name
-            </li>
-        }
-    </ul>
-</div>
 
 <ul class="course">
 @foreach (var course in Model)
@@ -39,6 +24,4 @@
         </div>
     </li>
 }
-</ul>
-
-
+ </ul>
